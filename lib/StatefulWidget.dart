@@ -23,35 +23,38 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int number = 0; //สร้าง State
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //home จะแสดงผลในหน้านี้
       appBar: AppBar(
-        title: const Text("เลือกเมนู"), //เมนูด้านบนแอพ
+        title: const Text("โปรแกรมนับเลข"), //เมนูด้านบนแอพ
       ),
       body: Center(
-        child: ListView(
-          children: getData(10),
+        child: Column(
+          //เรียงลำดับ column ใน Widget
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "กดปุ่ม เพื่อเพิ่มจำนวนตัวเลข",
+              style: TextStyle(fontSize: 15),
+            ),
+            Text(
+              "$number",
+              style: TextStyle(fontSize: 30),
+            ),
+            Text("Hello Flutter")
+          ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            number++;
+          });
+        },
+        child: Icon(Icons.add),
+      ),
     );
-  }
-
-  //เตรียมข้อมูล
-  List<Widget> getData(int count) {
-    List<Widget> data = [];
-    for (var i = 0; i < count; i++) {
-      var menu = ListTile(
-        title: Text(
-          "เมนูที่ ${i + 1}",
-          style: TextStyle(fontSize: 20),
-        ),
-        subtitle: Text("หัวข้อย้อย ${i + 1}"),
-      );
-      data.add(menu);
-    }
-    return data;
   }
 }
