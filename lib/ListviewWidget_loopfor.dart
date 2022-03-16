@@ -41,14 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //เตรียมข้อมูล
   List<Widget> getData(int count) {
+    //กลุ่มข้อมูล Text Widget
     List<Widget> data = [];
     for (var i = 0; i < count; i++) {
-      var menu = ListTile(
-        title: Text(
-          "เมนูที่ ${i + 1}",
-          style: TextStyle(fontSize: 20),
-        ),
-        subtitle: Text("หัวข้อย้อย ${i + 1}"),
+      var menu = Text(
+        "รายการที่ ${i + 1}",
+        style: TextStyle(fontSize: 20),
       );
       data.add(menu);
     }

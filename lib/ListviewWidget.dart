@@ -26,32 +26,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // ListWideget
+    List<Widget> data = [];
+    data.add(Text(
+      "กดปุ่ม เพื่อเพิ่มจำนวนตัวเลข",
+      style: TextStyle(fontSize: 15),
+    ));
+    data.add(Text(
+      number.toString(),
+      style: TextStyle(fontSize: 30),
+    ));
+
     return Scaffold(
       //home จะแสดงผลในหน้านี้
       appBar: AppBar(
-        title: const Text("เลือกเมนู"), //เมนูด้านบนแอพ
+        title: const Text("โปรแกรมนับเลข"), //เมนูด้านบนแอพ
       ),
       body: Center(
-        child: ListView(
-          children: getData(10),
+        child: Column(
+          //เรียงลำดับ column ใน Widget
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: data,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: addNumber,
+        child: const Icon(Icons.add, size: 15),
       ),
     );
   }
 
-  //เตรียมข้อมูล
-  List<Widget> getData(int count) {
-    List<Widget> data = [];
-    for (var i = 0; i < count; i++) {
-      var menu = ListTile(
-        title: Text(
-          "เมนูที่ ${i + 1}",
-          style: TextStyle(fontSize: 20),
-        ),
-        subtitle: Text("หัวข้อย้อย ${i + 1}"),
-      );
-      data.add(menu);
-    }
-    return data;
+  //evenfuntion
+  void addNumber() {
+    setState(() {
+      number++;
+    });
   }
 }
