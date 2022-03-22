@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'CafeMenu.dart';
+import 'MoneyBox.dart';
 
 void main() {
   var app = MyApp();
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "โปรแกรมนับเลข",
+        title: "Drink Drink",
         home: MyHomePage(),
         theme: ThemeData(primarySwatch: Colors.blueGrey));
   }
@@ -41,90 +42,31 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         //home จะแสดงผลในหน้านี้
         appBar: AppBar(
-          title: const Text("บัญชีของฉัน"), //เมนูด้านบนแอพ
+          title: const Text(
+            "บัญชีของฉัน",
+            style: TextStyle(
+              fontSize: 15,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ), //เมนูด้านบนแอพ
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.lightBlueAccent,
-                    borderRadius: BorderRadius.circular(25)),
-                height: 75,
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "คงเหลือ",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      Expanded(
-                        child: Text("15,000.-",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.end),
-                      )
-                    ]),
-              ),
+              MoneyBox("ยอดคงเหลือ", 10000, Colors.blueAccent, 75),
               SizedBox(
                 height: 5,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(25)),
-                height: 50,
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "รับ",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      Expanded(
-                        child: Text("+ 20,000.-",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.end),
-                      )
-                    ]),
-              ),
+              MoneyBox("รายรับ", 5000, Colors.green, 55),
               SizedBox(
                 height: 5,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.redAccent,
-                    borderRadius: BorderRadius.circular(25)),
-                height: 50,
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "จ่าย",
-                        style: TextStyle(fontSize: 15, color: Colors.white),
-                      ),
-                      Expanded(
-                        child: Text("- 5,000.-",
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.end),
-                      )
-                    ]),
-              ),
+              MoneyBox("รายจ่าย", 2000, Colors.red, 55),
+              SizedBox(
+                height: 5,
+              )
             ],
           ),
         ));
