@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 //สร้าง container ต้นแบบ
 class MoneyBox extends StatelessWidget {
@@ -22,7 +23,7 @@ class MoneyBox extends StatelessWidget {
           style: TextStyle(fontSize: 15, color: Colors.white),
         ),
         Expanded(
-          child: Text(amount.toString(),
+          child: Text('${NumberFormat("#,###.##").format(amount)}',
               style: TextStyle(
                 fontSize: 15,
                 color: Colors.white,
